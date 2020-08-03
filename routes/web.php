@@ -21,14 +21,18 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/projects', function () {
+Route::get('/proyectos', function () {
     return view('projects');
 });
 
-Route::get('/registr', function () {
-    return view('registr');
+Route::get('/registro', function () {
+    return view('register');
 });
 
-Route::get('/logn', function () {
-    return view('logn');
+Route::get('/ingreso', function () {
+    return view('login');
+});
+
+Route::get('/crear', function () {
+    return view('create');
 });

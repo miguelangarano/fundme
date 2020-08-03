@@ -1,39 +1,33 @@
 <?php
-
 namespace App;
+use Illuminate\Database\Eloquent\Model;
+class User extends Model{
+    public $id;
+    public $email;
+    public $name;
+    public $role;
+    public $birthday;
+    public $phone;
+    public $password;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+    public function __construct($email, $name, $role, $birthday, $phone) {
+        $this->email = $email;
+        $this->name = $name;
+        $this->role = $role;
+        $this->birthday = $birthday;
+        $this->phone = $phone;
+    }
 
-class User extends Authenticatable
-{
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function exportToJson(){
+        $user = new \stdClass();
+        $user->id = $this->id;
+        $user->email = $this->email;
+        $user->name = $this->name;
+        $user->role = $this->role;;
+        $user->birthday = $this->birthday;
+        $user->phone = $this->phone;
+        $user->password = $this->password;
+        return $user;
+    }
 }
+?>

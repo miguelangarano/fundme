@@ -13,19 +13,7 @@
 
 <body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('assets/img/bg.jpg?h=1a9398b8c353a8cdf63d59f5136160b1');">
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">elige tu favorito</span><span class="site-heading-lower">PROYECTOS</span></h1>
-    <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
-        <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">FOUNDME</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">CREA UNA CUENTA</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Registro.html">pROYECTOS</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Proyectos.html"></a></li>
-                    <li class="nav-item" role="presentation"></li>
-                </ul>
-        </div>
-        </div>
-    </nav>
+    @include('header')
     <section class="page-section">
         <div class="container">
             <div class="product-item">
