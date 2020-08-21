@@ -16,8 +16,10 @@ class Project extends Model{
     public $founders;
     public $approvalState;
     public $creationDate;
+    public $mission;
+    public $vision;
 
-    public function __construct($name, $description, $expectedIncome, $currentIncome, $active, $finished, $videoUrl, $projectPhase, $address, $sriId, $founders, $approvalState, $creationDate) {
+    public function __construct($name, $description, $expectedIncome, $currentIncome, $active, $finished, $videoUrl, $projectPhase, $address, $sriId, $founders, $approvalState, $creationDate, $mission, $vision) {
         $this->name = $name;
         $this->description = $description;
         $this->expectedIncome = $expectedIncome;
@@ -31,6 +33,8 @@ class Project extends Model{
         $this->founders = $founders;
         $this->approvalState = $approvalState;
         $this->creationDate = $creationDate;
+        $this->mission = $mission;
+        $this->vision = $vision;
     }
 
     public function exportToJson(){
@@ -48,6 +52,8 @@ class Project extends Model{
         $project->founders = $this->founders;
         $project->approvalState = $this->approvalState;
         $project->creationDate = $this->creationDate;
+        $project->mission = $this->mission;
+        $project->vision = $this->vision;
         return $project;
     }
 }

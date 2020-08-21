@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
     <link rel="stylesheet" href="/assets/css/styles.min.css?h=545e0db46bd559c76b740dfa81d31323">
+    <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 
 <body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/assets/img/bg.jpg?h=1a9398b8c353a8cdf63d59f5136160b1');">
@@ -33,19 +34,19 @@
                                     <div class="col-lg-12">
                                         <form id="contactForm" name="contactForm" novalidate="novalidate">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" id="name" placeholder="Nombre *" required="">
-                                                <input class="form-control" type="text" id="description" placeholder="Descripción *" required="">
-                                                <input class="form-control" type="number" id="expectedincome" placeholder="Ingreso esperado *" required="">
-                                                <ul class="list-group" id="urlList">
+                                                <input class="form-control elements" type="text" id="name" placeholder="Nombre *" required="">
+                                                <input class="form-control elements" type="text" id="description" placeholder="Descripción *" required="">
+                                                <input class="form-control elements" type="number" id="expectedincome" placeholder="Ingreso esperado *" required="">
+                                                <ul class="list-group elements" id="urlList">
                                                     <li class="list-group-item">
-                                                        <span>Videos del Proyecto
-                                                            <input class="form-control" type="url" id="url0" placeholder="Video URL *" required="">
+                                                        <span elements>Videos del Proyecto
+                                                            <input class="form-control elements" type="url" id="url0" placeholder="Video URL *" required="">
                                                         </span>
                                                     </li>
                                                 </ul>
-                                                <button class="btn btn-primary" id="addurl" type="button" onClick="addUrl()">AGREGAR URL</button>
-                                                <input class="form-control" type="text" id="address" placeholder="Dirección *" required="">
-                                                <div class="dropdown">
+                                                <button class="btn btn-primary elements" id="addurl" type="button" onClick="addUrl()">AGREGAR URL</button>
+                                                <input class="form-control elements" type="text" id="address" placeholder="Dirección *" required="">
+                                                <div class="dropdown elements">
                                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">ETAPA DEL PROYECTO</button>
                                                     <div class="dropdown-menu" role="menu">
                                                         <a class="dropdown-item" role="presentation" onClick="setSelectedStatus(0)">IDEA</a>
@@ -54,11 +55,13 @@
                                                         <a class="dropdown-item" role="presentation" onClick="setSelectedStatus(3)">CONSOLIDADO</a>
                                                     </div>
                                                 </div>
-                                                <ul class="list-group" id="emailList">
+                                                <ul class="list-group elements" id="emailList">
                                                     <li class="list-group-item"><span>Fundadores<input class="form-control" type="url" id="email0" placeholder="Correo *" required=""></span></li>
                                                 </ul>
-                                                <button class="btn btn-primary" id="addemail" type="button" onClick="addEmail()">AGREGAR CORREO</button>
-                                                <input class="form-control" type="text" id="sriid" placeholder="RUC o RISE *" required="">
+                                                <button class="btn btn-primary elements" id="addemail" type="button" onClick="addEmail()">AGREGAR CORREO</button>
+                                                <input class="form-control elements" type="text" id="sriid" placeholder="RUC o RISE *" required="">
+                                                <input class="form-control elements" type="text" id="mission" placeholder="Misión del proyecto *" required="">
+                                                <input class="form-control elements" type="text" id="vision" placeholder="Visión del proyecto *" required="">
                                                 <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="button" onClick="submitProject()" style="margin-top: 30px;">CREAR CUENTA</button></div>
                                         </form>
                                     </div>
@@ -136,7 +139,9 @@
                 "address": $("#address").val(),
                 "projectPhase": selectedStatus,
                 "founders": emailList,
-                "sriId": $("#sriid").val()
+                "sriId": $("#sriid").val(),
+                "mission": $("#mission").val(),
+                "vision": $("#vision").val()
             }
             if(data.name!=="" && data.description!=="" && data.expectedincome!=="" && data.videoUrl[0]!=="" && data.projectphase!==-1 && data.founders[0]!=="" && data.sriid!=="" && data.address!==""){
                 $("#spinnerModal").modal('show');
