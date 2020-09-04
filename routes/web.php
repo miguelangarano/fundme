@@ -36,3 +36,7 @@ Route::get('/ingreso', function () {
 Route::get('/crear', function () {
     return view('create');
 });
+
+Route::get('/formulario-tarjeta', function () {
+    return view('cardform');
+});
