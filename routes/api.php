@@ -24,3 +24,4 @@ Route::post('/create-user', 'UserController@createUser');
 Route::post('/login-user', 'UserController@loginUser');
 Route::post('/create-project', 'ProjectController@createProject');
 Route::post('/makepayment', 'PaymentData@encryptCardData');
+Route::post('/get-projects', 'ProjectController@getProjects');
