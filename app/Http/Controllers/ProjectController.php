@@ -39,13 +39,15 @@ class ProjectController extends Controller
     public function getProjects(Request $request){
         $factory = (new Factory)->withServiceAccount(__DIR__.'/firebase/firebase.json');
         $database = $factory->createDatabase();
-        $reference = $database->getReference('projects');
-        $snapshot = $reference->getSnapshot();
-        $keys = $reference->getChildKeys();
+        $keys = $database->getReference('projects')->getChildKeys();
+        //$snapshot = $database->getReference('projects')->orderByChild('active')->equalTo(true)->getSnapshot();
+        
         $responseData = [];
         foreach($keys as $key){
-            $project = new Project($snapshot[$key]["name"], $snapshot[$key]["description"], $snapshot[$key]["expectedIncome"], $snapshot[$key]["currentIncome"], $snapshot[$key]["active"], $snapshot[$key]["finished"], $snapshot[$key]["videoUrl"], $snapshot[$key]["projectPhase"], $snapshot[$key]["address"], $snapshot[$key]["sriId"], $snapshot[$key]["founders"], $snapshot[$key]["approvalState"], $snapshot[$key]["creationDate"], $snapshot[$key]["mission"], $snapshot[$key]["vision"]);
-            $project->id = $key;
+            
+            $snapshot = $database->getReference('projects/'.strval($key))->getSnapshot();
+            $project = ["id"=>$key, "name"=>$snapshot->getValue()["name"], "description"=>$snapshot->getValue()["description"], "expectedIncome"=>$snapshot->getValue()["expectedIncome"], "currentIncome"=>$snapshot->getValue()["currentIncome"], "active"=>$snapshot->getValue()["active"], "finished"=>$snapshot->getValue()["finished"], "videoUrl"=>$snapshot->getValue()["videoUrl"], "projectPhase"=>$snapshot->getValue()["projectPhase"], "address"=>$snapshot->getValue()["address"], "sriId"=>$snapshot->getValue()["sriId"], "founders"=>$snapshot->getValue()["founders"], "approvalState"=>$snapshot->getValue()["approvalState"], "creationDate"=>$snapshot->getValue()["creationDate"], "mission"=>$snapshot->getValue()["mission"], "vision"=>$snapshot->getValue()["vision"]];
+            
             array_push($responseData, $project);
         }
         return json_encode($responseData);

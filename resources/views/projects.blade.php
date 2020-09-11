@@ -87,6 +87,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.min.js?h=eb8cf3b765438a48682c36c340975333"></script>
+    <script>
+        let data = {
+            "ex": "hola"
+        };
+        function getProjects(){
+            $.post({
+                type: "POST",
+                url: "http://localhost:8000/api/get-projects",
+                data: data
+            }, function(response){
+                response = JSON.parse(response.toString());
+                console.log(response);
+                
+            }).fail(function(error) {
+                console.log(error);
+            });
+        }
+        getProjects();
+    </script>
 </body>
 
 </html>
