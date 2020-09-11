@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
     <link rel="stylesheet" href="assets/css/styles.min.css?h=545e0db46bd559c76b740dfa81d31323">
+
+    <style>
+    .center {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 78%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    }
+    </style>
 </head>
 
 <body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('assets/img/bg.jpg?h=1a9398b8c353a8cdf63d59f5136160b1');">
@@ -16,11 +27,20 @@
     @include('header')
     <section class="page-section">
         <div class="container">
+            @if(session('status'))
+                <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Exitoso: </strong> {{session('status')}}
+                </div>
+            @endif
             <div class="product-item">
                 <div class="d-flex product-item-title">
                     <div class="d-flex mr-auto bg-faded p-5 rounded">
                         <h2 class="section-heading mb-0"><span class="section-heading-upper"></span><span class="section-heading-lower">cafetería Coffees &amp; Teas</span></h2>
                     </div>
+                    <div class="center">
+                    <a href="{{url('/paypal/pay')}}" class="btn btn-primary btn-xl text-uppercase" role="button" style="margin-top: 50px;">PAYPAL</a>
+                </div>
                 </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/products-01.jpg?h=e08020951d9f0872748127a17fd95e90">
                 <div class="bg-faded p-5 rounded">
                     <p class="mb-0">Nos enorgullecemos de nuestro trabajo, y se nota. Cada vez que nos solicita una bebida, le garantizamos que será una experiencia que vale la pena tener. Ya sea nuestro mundialmente famoso capuchino venezolano, un refrescante té de

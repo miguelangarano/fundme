@@ -40,3 +40,7 @@ Route::get('/crear', function () {
 Route::get('/formulario-tarjeta', function () {
     return view('cardform');
 });
+
+//Payment Paypal
+Route::get('/paypal/pay','PaymentController@payWithPaypal');
+Route::get('/paypal/status','PaymentController@payPalStatus');
